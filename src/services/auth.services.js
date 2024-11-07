@@ -1,4 +1,4 @@
-import { findUsers } from "../models/user.models.js";
+import { findUsers } from "../models/user.model.js";
 
 const getLogin = (req, res) => {
   const date = new Date().toLocaleTimeString();

@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
-import { sessionConfig } from "./config/session.config.js";
-import deafultRouter from "./routers/auth.routers.js";
+import { sessionConfig } from "./config/session.config.js"
+import deafultRouter from "./routes/auth.router.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { morganConfig } from "./config/morgan.config.js";
@@ -10,7 +10,7 @@ import nocache from "nocache";
 import {
   createAccessLogStream,
   createLogger,
-} from "./services/morgan.services.js";
+} from "./services/morgan.service.js";
 
 
 const app = express();
