@@ -3,21 +3,21 @@ import { findUsers } from "../models/user.model.js";
 const getLogin = (req, res) => {
   const date = new Date().toLocaleTimeString();
   if (req.session.user) {
-    res.redirect("/home");
+   return res.redirect("/home");
   }
-  res.render("login", { error: null, time: date });
+  return res.render("login", { error: null, time: date });
 };
 
 const postLogin = (req, res) => {
   const { username, password } = req.body;
 
   if (username === "" || password === "") {
-    res.render("login", {
+   return res.render("login", {
       error: "Username and password should be need",
       time: null,
     });
   } else if (password.length < 6) {
-    res.render("login", {
+    return res.render("login", {
       error: "Password should be greater than 6 characters",
       time: null,
     });
@@ -27,9 +27,9 @@ const postLogin = (req, res) => {
 
   if (user) {
     req.session.user = user;
-    res.redirect("/home");
+    return res.redirect("/home");
   } else {
-    res.render("login", { error: "Invalid credentials found", time: null });
+    return res.render("login", { error: "Invalid credentials found", time: null });
   }
 };
 
@@ -42,15 +42,15 @@ const postLogout = (req, res) => {
 };
 
 const home = (req, res) => {
-  res.render("home", { username: req.session.user.username });
+  return res.render("home", { username: req.session.user.username });
 };
 
 const getIndex = (req, res) => {
-  res.redirect("home");
+ return res.redirect("home");
 };
 
 const PageNotFound = (req, res) => {
-  res.render("notfound");
+ return res.render("notfound");
 };
 
 const getContact = (req, res) => {
